@@ -21,6 +21,21 @@ def generate_new_string(s, t):
         else:
             return value
 
-result = generate_new_string(s, t)
-print(result)
+#result = generate_new_string(s, t)
+#print(result)
 
+
+def way2(s, t):
+    result = ''
+    for i in range(len(s)-1 , 0, -1):
+        if s[i] == 'z':
+            result = s[:i] + 'a' + s[i+1:]
+        result = s[:i] + chr(ord(s[i]) + 1)
+
+    if result >= t:
+        return "No such string"
+    else:
+        return result
+
+res = way2(s, t)
+print(res)

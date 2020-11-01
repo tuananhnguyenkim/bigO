@@ -1,32 +1,24 @@
-import time
-
 n, k = map(int, input().split())
 arr = list(map(int, input().split()))
 
-def find_arr(n, k , arr):
-    start = time.time()
+def find_arr(n, k, arr):
     unique, point = 0, 0
     result = (-1, -1)
     if len(set(arr)) < k:
         return result
-    for i in range(k, n):
+    for i in range(k-1, n):
         choose_arr = arr[:i]
         unique = len(set(choose_arr))
         while unique == k:
             choose_arr = choose_arr[point:]
             unique = len(set(choose_arr))
-            if unique != 3:
-                end = time.time()
-                print(end - start)
+            if unique != k:
                 return (point, i)
             point += 1
-
     return result
 
-
-
 test = find_arr(n, k, arr)
-print(test)
+print(*test)
 """
 unique = 0
 i = 0
